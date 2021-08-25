@@ -1,23 +1,23 @@
-{
-  "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+require("dotenv").config();
+
+module.exports = {
+  development: {
+    database: "url-shortener",
+    use_env_variable: "DATABASE_URL_DEV",
+    dialect: "postgres",
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  test: {
+    database: "shortUrl_test",
+    use_env_variable: "DATABASE_URL_TEST",
+    dialect: "postgres",
+    logging: false,
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-}
+  production: {
+    database: "url-shortener",
+    use_env_variable: "DATABASE_URL",
+    dialect: "postgres",
+    dialectOptions: {
+      ssl:true,
+    },
+  },
+};
